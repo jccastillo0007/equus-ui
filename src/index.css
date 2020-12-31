@@ -1,0 +1,631 @@
+/*
+Versión del     05-nov 2020
+
+break points para rel responsive
+--breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+
+    web fonts: https://fonts2u.com/websymbols-regular.font
+
+    referencias:
+
+    https://www.neoguias.com/crear-menu-responsivo/#Resultado_Codigo_completo
+    http://www.falconmasters.com/web-design/menu-desplegable-adaptable-dispositivos-moviles/  con submenú
+    http://www.falconmasters.com/web-design/menu-de-navegacion-responsive/   menú sencillo
+    https://icomoon.io/app/#/select/font   para las fuentes de icomoon
+    https://css-tricks.com/couple-takes-sticky-footer/   para mandar el footer abajo
+
+
+*/
+
+/* variables a nivel HTML */
+:root {
+    --grismedio: #c9c9c9;
+    --grisclaro: #e6e6e6;
+    --grismuyclaro: #f8f8f8;
+    --casinegro: #4d4747;
+
+    --fondoMenu: #f8f8f8;
+    --menuFont: #333367;
+    --hoverMenu: #c9c9c9;
+    --menuFontHover:  #596480;
+    --fondoSubmenu: #e6e6e6;
+
+    --azulFuerte-logo: #333367;
+    --azulClaro-logo: #52658c;
+    --azulMedio-logo: #52658c;
+    --verdeFondo-logo: #a8cf45;
+    --verdeClaro-logo: #89aa3c;
+
+  }
+
+/* fuentes
+https://fonts2u.com/websymbols-regular.font
+
+@font-face{
+    font-family: "icons";
+    src: url("fonts/websymbols-regular-webfont.svg#WebSymbolRegular") format('svg'),
+        url("fonts/websymbols-regular-webfont.eot");
+    src: url("fonts/websymbols-regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("fonts/websymbols-regular-webfont.woff") format("woff"),
+    url("fonts/websymbols-regular-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*/
+
+
+/*INICIO ESTILOS GENERALES */
+
+* {
+    margin: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("img/pattern.svg");
+   margin: 0;
+   padding: 0;
+ }
+
+
+.clearfix{
+    clear: both;
+    float: none;
+}
+
+
+/* inicio para el tema de mantener abajo el footer */
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    margin-bottom: 50px;
+}
+.push{
+    height: 50px;
+}
+
+/* fin para el tema de mantener abajo el footer */
+
+/* FIN DE ESTILOS GENERALES */
+
+/* INICIO DEL MENÚ INCLUYENDO LA HAMBURGUESA*/
+.menu_bar{
+    display: none;
+}
+
+header{
+    width: 100%;
+}
+
+
+header nav{
+    background-color: var(--fondoMenu);
+    z-index: 1000;  /* menú siempre arriba de los demás elementos */
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;  /* para centrarlo */
+}
+
+
+header nav ul{
+    list-style: none;
+}
+
+header nav ul li{
+    display: inline-block;  /* aplica para desplegar submenús */
+    position: relative;
+}
+
+header nav ul li:hover{
+    background-color: var(--hoverMenu);
+
+}
+
+header nav ul li .caret{
+    position: relative;
+    top: 3px;
+    margin-left: 10px;
+    margin-right: 0px;
+
+}
+
+header nav ul li a{
+    display: block;
+    color: var(--menuFont);
+    text-decoration: none;  /*elimina la linea abajo */
+    padding: 20px;
+}
+
+header nav ul li a:hover{
+    color: var(--menuFontHover);
+}
+
+
+header nav ul li span{
+    margin-right: 10px;  /*separar el ícono del menú */
+}
+
+header nav ul li .children{
+    display: none;
+    background-color: var(--fondoSubmenu);
+    position: absolute;
+    width: 150%;
+    z-index: 1000; /* para que el submenú no se sobreponga */
+/* para menus desplegables, el padre va con position relative
+y los hijos con position absoluta */
+}
+header nav ul li:hover .children{
+    display: block;
+
+}
+
+header nav ul li .children li{
+    display: block; /* al desplegar el menú, abarcará el 100% del ancho */
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    height: 45px;
+}
+
+header nav ul li .children li a{
+    display: block;
+}
+
+header nav ul li .children li a:hover{
+    display: block;
+    color: var(--menuFontHover);
+}
+
+
+header nav ul li .children li a span{
+    float: right;
+    position: relative;
+    top: 3px;
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+/* FIN DEL MENÚ */
+
+/* INICIO DEL SLIDER */
+
+#slider{
+	width: 100%;
+	height: 8.3em;
+/*	line-height: 80px; */
+	color: white;
+    text-shadow: 0px 0px 5px #444;
+    /*
+    background: rgba(73,155,234,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(39,59,145,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, rgba(39,59,145,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(39,59,145,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(39,59,145,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(39,59,145,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(73,155,234,1) 0%, rgba(39,59,145,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#273b91', GradientType=1 );
+
+    background: rgba(248,80,50,1);
+    background: -moz-linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 51%, rgba(62,64,149,1) 91%, rgba(62,64,149,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(248,80,50,1)), color-stop(51%, rgba(241,111,92,1)), color-stop(91%, rgba(62,64,149,1)), color-stop(100%, rgba(62,64,149,1)));
+    background: -webkit-linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 51%, rgba(62,64,149,1) 91%, rgba(62,64,149,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 51%, rgba(62,64,149,1) 91%, rgba(62,64,149,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 51%, rgba(62,64,149,1) 91%, rgba(62,64,149,1) 100%);
+    background: linear-gradient(45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 51%, rgba(62,64,149,1) 91%, rgba(62,64,149,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#3e4095', GradientType=1 );
+*/
+    background: rgba(255,175,75,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,175,75,1) 0%, rgba(255,175,75,1) 47%, rgba(255,146,10,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,175,75,1)), color-stop(47%, rgba(255,175,75,1)), color-stop(100%, rgba(255,146,10,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,175,75,1) 0%, rgba(255,175,75,1) 47%, rgba(255,146,10,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,175,75,1) 0%, rgba(255,175,75,1) 47%, rgba(255,146,10,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,175,75,1) 0%, rgba(255,175,75,1) 47%, rgba(255,146,10,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,175,75,1) 0%, rgba(255,175,75,1) 47%, rgba(255,146,10,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=1 );
+
+}
+
+#slider > img{
+    float: left;
+    /*margin: 1%;*/
+    width: 20%;
+    padding-top: 1%;
+}
+
+#slider h1{
+	margin-top: 0;
+	padding-top: 3%;
+    text-align: center;
+    /*
+        float: left;
+    margin-left: 5%;
+    padding: 0px;
+	text-align: center;
+    margin-bottom: 10px;
+    */
+}
+
+/* FIN DEL SLIDER */
+
+/* FOOTER */
+footer{
+    width: 100%;
+	height: 50px;
+    line-height: 50px;
+    color: white;
+	background: var(--azulFuerte-logo);
+}
+#footer p{
+	margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* INICIO DEL CONTENIDO DE PRUEBA */
+
+.center{
+	width: 75%;
+    margin: 0px auto;
+    text-align: center;
+    display: block;
+}
+
+#content {
+    padding: 20px;
+	width: 70%;
+	float: right;
+	height: auto;
+    margin-right: 20px;
+    background-color: var(--grismuyclaro);
+
+}
+#sidebar{
+    width: 25%;
+    float: left;
+    padding-top: 8%;
+}
+
+#estandar-Actual{
+    font-size: 10px;
+    min-height: 300px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.subheader{
+    font-size: 38px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.mid-form{
+	width:75%;
+	margin: 0px auto;
+}
+
+input[type="text"]{
+	width: 90%;
+	height: 30px;
+    border: 1px solid #ccc;
+    border: 1px solid #c9c9c9;
+    box-shadow: 0px 0px 2px #ccc inset;
+	padding: 1px;
+	margin-bottom: 5px;
+    transition: 300ms all;
+    margin-left: 2.5%;
+}
+input[type="text"]:focus{
+    box-shadow: 0px 0px 1px #0f5a97 inset;
+    box-shadow: 0px 0px 1px grey inset;
+
+}
+
+.label-bold{
+    border: 1px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.texto-soloLectura{
+    font-style: italic;
+}
+
+
+#elige-Clausula > p,
+.texto-soloLectura{
+    border: 2px solid var(--azulFuerte-logo);
+    padding: 5px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 8px #ecedef;
+    /*
+
+ hover inbursa
+        .drop .dk-selected:hover, .form-control:hover {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+        }
+*/
+}
+
+.caja-Tenue{
+    border: 0.5px solid var(--azulClaro-logo);
+    padding: 5px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 8px #ecedef;
+    margin-top: 10px;
+}
+
+.icono-chico{
+    width: 18px;
+}
+.icono-mediano{
+    width: 30px;
+}
+.icono-grande{
+    width: 40px;
+}
+
+.listo{
+    width: 120px;
+    margin-left: calc( (100% - 92px ) / 2 );
+
+}
+
+
+#elige-Clausula{
+    margin: 0px auto;
+    width: 250px;
+    margin-left: calc( (100% - 16% ) / 2 );
+    height: 50px;
+    display: block;
+
+}
+
+#elige-Clausula img{
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+}
+
+#elige-Clausula p{
+    float: left;
+}
+
+.cajaActuales,
+#estandar-Actual{
+    border: 1px solid #ccc;
+    border: 2px solid var(--azulClaro-logo);
+    padding: 5px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 8px #ecedef;
+
+
+}
+ /* fin del contenido */
+
+/*INICIO LISTA DESPLEGABLE
+
+http://w3.unpocodetodo.info/css3/listas-desplegables.php
+
+*/
+
+#menu * { list-style:none;
+}
+#menu li{ line-height:180%;}
+#menu li a{color:#222; text-decoration:none;}
+#menu li a:before{ content:"\025b8"; color:#ddd; margin-right:4px;}
+#menu input[name="list"] {
+	position: absolute;
+	left: -1000em;
+    }
+
+    #menu label:before{ content:"\025b8"; margin-right:4px;}
+#menu input:checked ~ label:before{ content:"\025be";}
+
+
+#menu .interior{display: none;}
+#menu input:checked ~ ul{display:block;}
+
+#label1,
+#label2,
+#label3
+{
+    background-color: #a8cf45;
+    font-weight: bold;
+}
+
+#seleccionada{
+    font-weight: bold;
+    color: var(--azulFuerte-logo) !important;
+    font-style: italic;
+    font-size: 12px;
+}
+ul li ul li{
+    text-align: initial;
+}
+
+/* FIN DE LA LISTA DESPLEGABLE */
+
+/*Estilos para el scroll bar
+https://www.campusmvp.es/recursos/post/como-personalizar-los-estilos-css-de-las-barras-de-scroll.aspx
+*/
+
+#estandar-Actual {
+    overflow:auto;
+    box-sizing: border-box;
+    padding:0 1rem;
+
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+#estandar-Actual::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+#estandar-Actual::-webkit-scrollbar:vertical {
+    width:10px;
+}
+#estandar-Actual::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+#estandar-Actual::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+#estandar-Actual::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    background-color: var(--grisclaro);
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+#estandar-Actual::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* fin scroll bar */
+
+
+@media screen and (max-width: 900px){
+
+    /* INICIO DEL MENÚ RESPONSIVO */
+    body{
+/* es del alto del menú responsivo,
+para que se vea todo el contenido de la página */
+        padding-top: 80px;
+        min-width: 360px;
+    }
+
+    .menu_bar{
+        display: block;  /* se muestra el menú */
+        width: 100%;
+        position: fixed;  /* siempre estará arriba */
+        top: 0;
+        background-color: var(--fondoMenu);
+        background-color: var(--casinegro);
+    }
+
+    .menu_bar .bt-menu{
+        display: block;
+        padding: 20px;
+        color: var(--menuFont);
+        overflow: hidden;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .menu_bar span{
+        float: right;
+        font-size: 40px;
+    }
+
+    header nav{
+        width: 80%;  /* ancho del menú responsive */
+        position: fixed;
+        right: 100%;
+        margin: 0;
+        overflow: scroll; /* si el menú es mas largo que la pantalla */
+        height: calc( 100% - 80px ); /* se quita el alto del padding */
+    }
+    header nav ul li{
+        display: block; /*abarca todo el ancho*/
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    header nav ul li a{
+        display: block; /*abarca todo el ancho*/
+    }
+
+    header nav ul li:hover .children{
+        /* no despliega el submenú con el hover*/
+        display: none;
+    }
+
+    header nav ul li .children{
+        width: 100%;
+        position: relative; /*muestra el submenú y recorre hacia abajo los elementos del menu principal */
+    }
+
+    header nav ul li .children li a{
+        margin-left: 20px;
+    }
+    header nav ul li .caret{
+        float: right;
+    }
+
+    /* FIN DEL MENÚ RESPONSIVO */
+    /* INICIO SLIDER */
+
+    #slider{
+        height: 7.3em;
+    }
+
+    #slider h1{
+        font-size: 24px;
+    }
+
+    .btn-white{
+        width: 140px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    /* FIN SLIDER */
+
+    #footer p{
+        font-size: 13x;
+    }
+
+    .center{
+        width: 90%;
+    }
+
+    #econtent {
+        width: 85%;
+    }
+
+}
+@media screen and (max-width: 550px){
+    body{
+        min-width: 360px;
+    }
+
+    #slider h1{
+        font-size: 20px;
+    }
+
+    .btn-white{
+        width: 120px;
+        height: 20px;
+        font-size: 11px;
+    }
+
+    #footer p{
+        font-size: 12px;
+    }
+
+    .center{
+        width: 100%;
+    }
+
+    #econtent {
+        width: 100%;
+    }
+}
