@@ -1,0 +1,13 @@
+/target/
+.classpath
+.project
+.settings/
+.eslintcache
+.gradle/
+.idea/
+build/
+gradle/
+gradlew
+gradlew.bat
+how-to-use.txt
+node_modules/
